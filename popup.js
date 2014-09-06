@@ -2,6 +2,14 @@
  * Distributed under the ISC License
  */
 
+function generateFeedLink(feed) {
+    if (localStorage.ttrssEnabled == "true" && localStorage.ttrssUrl) {
+        return localStorage.ttrssUrl + "/public.php?op=subscribe&feed_url=" + feed.href;
+    } else {
+        return feed.href;
+    }
+}
+
 window.addEventListener("load", function() {
     var feeds = chrome.extension.getBackgroundPage().feeds;
     var feedList = document.getElementById("feed-list");
@@ -17,7 +25,7 @@ window.addEventListener("load", function() {
             title = feed.type + " feed";
         }
 
-        entry.innerHTML = '<a target="_blank" href="' + feed.href + '">' + title + '</a>';
+        entry.innerHTML = '<a target="_blank" href="' + generateFeedLink(feed) + '">' + title + '</a>';
 
         feedList.appendChild(entry);
     }

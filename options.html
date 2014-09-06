@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tiny Feeds Configuration</title>
+<script type="text/javascript" src="options.js"></script>
+<style type="text/css">
+label { margin: 2px; }
+#options-save { margin: 1em 0; }
+.form .option { margin: 0.8em 0; }
+.form label { font-weight: bold; }
+#save-success { font-weight: bold; font-size: 1.1em; display: none; }
+</style>
+</head>
+<body>
+<div class="ttrss form">
+    <h1>Tiny Tiny RSS configuration</h1>
+
+    <div class="option">
+        <label for="ttrss-url">Your TTRSS homepage (requires bookmarklets to be enabled)</label><br/>
+        <input type="url" id="ttrss-url"/>
+    </div>
+
+    <div class="option">
+        <label for="ttrss-links">Enable TTRSS links</label><br/>
+        <input type="checkbox" id="ttrss-links"/>
+    </div>
+</div>
+
+<button id="options-save">Save</button>
+<div id="save-success">Configuration saved successfully</div>
+</body>
+</html>
