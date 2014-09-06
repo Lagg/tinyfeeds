@@ -1,4 +1,4 @@
-# Tiny Tiny Feeds #
+# Tiny Feeds #
 
 I don't know why but every extension for chrome I find that looks for feeds on a page tries to do way too much. I don't need
 integration with the google reader replacement of the week and many other people probably don't either. So hopefully this'll be useful

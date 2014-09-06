@@ -1,7 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "Tiny Tiny Feeds",
-    "short_name": "TT-Feeds",
+    "name": "Tiny Feeds",
     "version": "0.1",
     "description": "Simple extension to find feeds in pages and take an action on the given feed configured by the user.",
     "icons": {
@@ -17,7 +16,7 @@
         "default_icon": {
             "19": "icon48.png"
         },
-        "default_title": "Tiny Tiny Feeds",
+        "default_title": "Feeds",
         "default_popup": "popup.html"
     },
     "homepage_url": "http://lagg.me",
