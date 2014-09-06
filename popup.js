@@ -11,22 +11,25 @@ function generateFeedLink(feed) {
 }
 
 window.addEventListener("load", function() {
-    var feeds = chrome.extension.getBackgroundPage().feeds;
     var feedList = document.getElementById("feed-list");
 
-    feedList.innerHTML = '';
+    chrome.runtime.getBackgroundPage(function(page) {
+        var feeds = page.feeds;
+        console.log(feeds);
+        feedList.innerHTML = '';
 
-    for (var i = 0; i < feeds.length; ++i) {
-        var feed = feeds[i];
-        var entry = document.createElement("li");
-        var title = feed.title;
+        for (var i = 0; i < feeds.length; ++i) {
+            var feed = feeds[i];
+            var entry = document.createElement("li");
+            var title = feed.title;
 
-        if (title.length == 0) {
-            title = feed.type + " feed";
+            if (title.length == 0) {
+                title = feed.type + " feed";
+            }
+
+            entry.innerHTML = '<a target="_blank" href="' + generateFeedLink(feed) + '">' + title + '</a>';
+
+            feedList.appendChild(entry);
         }
-
-        entry.innerHTML = '<a target="_blank" href="' + generateFeedLink(feed) + '">' + title + '</a>';
-
-        feedList.appendChild(entry);
-    }
+    });
 });
