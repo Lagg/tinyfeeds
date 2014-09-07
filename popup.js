@@ -13,23 +13,33 @@ function generateFeedLink(feed) {
 window.addEventListener("load", function() {
     var feedList = document.getElementById("feed-list");
 
-    chrome.runtime.getBackgroundPage(function(page) {
-        var feeds = page.feeds;
-        console.log(feeds);
-        feedList.innerHTML = '';
+    chrome.tabs.query({active: true, lastFocusedWindow: true}, function(tabs) {
+        var feeds = null;
 
-        for (var i = 0; i < feeds.length; ++i) {
-            var feed = feeds[i];
-            var entry = document.createElement("li");
-            var title = feed.title;
+        if (tabs.length != 0) {
+            var currentFeeds = JSON.parse(localStorage.feeds);
+            var feeds = currentFeeds[tabs[0].id];
 
-            if (title.length == 0) {
-                title = feed.type + " feed";
+            if (!feeds) {
+                return;
             }
 
-            entry.innerHTML = '<a target="_blank" href="' + generateFeedLink(feed) + '">' + title + '</a>';
+            feedList.innerHTML = '';
 
-            feedList.appendChild(entry);
+            for (var i = 0; i < feeds.length; ++i) {
+                var feed = feeds[i];
+                var entry = document.createElement("li");
+                var title = feed.title;
+
+                if (title.length == 0) {
+                    title = feed.type + " feed";
+                }
+
+                entry.innerHTML = '<a target="_blank" href="' + generateFeedLink(feed) + '">' + title + '</a>';
+
+                feedList.appendChild(entry);
+            }
+
         }
     });
 });

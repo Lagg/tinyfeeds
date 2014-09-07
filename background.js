@@ -2,11 +2,17 @@
  * Distributed under the ISC License
  */
 
-var feeds = null;
+chrome.runtime.onInstalled.addListener(function() {
+    if (!localStorage.feeds) {
+        localStorage.feeds = "{}";
+    }
+});
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.feeds) {
-        feeds = request.feeds;
+        feedStore = JSON.parse(localStorage.feeds);
+        feedStore[sender.tab.id] = request.feeds;
+        localStorage.feeds = JSON.stringify(feedStore);
         chrome.pageAction.show(sender.tab.id);
     }
 });
