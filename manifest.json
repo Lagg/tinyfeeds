@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Tiny Feeds",
-    "version": "0.2",
+    "version": "0.3",
     "description": "Simple extension to find feeds in pages and take an action on the given feed configured by the user.",
     "icons": {
         "16": "icon16.png",
