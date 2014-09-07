@@ -4,6 +4,9 @@ I don't know why but every extension for chrome I find that looks for feeds on a
 integration with the google reader replacement of the week and many other people probably don't either. So hopefully this'll be useful
 to a few of them.
 
+The packed extension can be found on the Chrome store
+[here](https://chrome.google.com/webstore/detail/tiny-feeds/mheapihpjkdfbghnlellpkekbjpncjbp).
+
 # License #
 
     Copyright (c) 2014, Anthony Garcia <anthony@lagg.me>
