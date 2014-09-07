@@ -30,12 +30,22 @@ window.addEventListener("load", function() {
                 var feed = feeds[i];
                 var entry = document.createElement("li");
                 var title = feed.title;
+                var link = document.createElement("a");
+                var icon = "rssicon24.png";
 
                 if (title.length == 0) {
                     title = feed.type + " feed";
                 }
 
-                entry.innerHTML = '<a target="_blank" href="' + generateFeedLink(feed) + '">' + title + '</a>';
+                if (feed.type == "atom") {
+                    icon = "atomicon24.png";
+                }
+
+                link.target = "_blank";
+                link.href = generateFeedLink(feed);
+                link.innerHTML = '<img src="' + icon + '" alt=""/> ' + title;
+
+                entry.appendChild(link);
 
                 feedList.appendChild(entry);
             }

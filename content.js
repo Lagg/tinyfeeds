@@ -15,7 +15,8 @@ for (var i = 0; i < links.length; ++i) {
     }
 
     if (typeMatch) {
-        apparentFeeds.push({title: link.title, href: link.href, type: typeMatch[1]});
+        var feedType = typeMatch[1].toLowerCase();
+        apparentFeeds.push({title: link.title, href: link.href, type: feedType});
     }
 }
 
