@@ -2,9 +2,13 @@
  * Distributed under the ISC License
  */
 
-var links = document.head.getElementsByTagName("link");
+var links = [];
 var apparentFeeds = [];
 var typeExp = /application\/([^+]*)\+xml/;
+
+if (document.head) {
+    links = document.head.getElementsByTagName("link");
+}
 
 for (var i = 0; i < links.length; ++i) {
     var link = links[i];
